@@ -11,12 +11,13 @@ import { getPuppies } from '@/queries'
 import { LoaderCircle } from 'lucide-react'
 import { ErrorBoundary } from "react-error-boundary"
 
-export default function App() {
+export default function App({puppies}: {puppies: Puppy[]}) {
   
   return (
     <PageWraper>
       <Container>
         <Header />
+        <pre>{JSON.stringify(puppies, null, 2)}</pre>
         <ErrorBoundary 
           fallbackRender={({error}) => (
             <div className="mt-12 bg-red-100 p-6 shadow ring ring-black/5">

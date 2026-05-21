@@ -1,8 +1,11 @@
 <?php
 
+use App\Models\Puppy;
 use Illuminate\Support\Facades\Route;
 
-Route::inertia('/', 'welcome')->name('home');
+Route::inertia('/', 'welcome',
+    ['puppies' => Puppy::all()->load(['user'])]
+)->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
